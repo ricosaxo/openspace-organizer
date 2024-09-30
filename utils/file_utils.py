@@ -12,11 +12,12 @@ def open_database (my_file :str) -> list:
     '''
 
     names = []
-    with open('my_file', mode='r', newline='') as file:
+    with open(my_file, mode='r', newline='') as file:
         csv_reader = csv.reader(file)
         for row in csv_reader:
             names.append(row)
-    names = [student for sublist in names for student in sublist] 
+    names = [student for sublist in names for student in sublist]
+    
 
     return names
 

@@ -28,7 +28,7 @@ class Seat():
         
     
     
-    def set_occupant(self, name):
+    def set_occupant(self, name :str):
 
         """
         The method to add someone to a Seat object.
@@ -105,6 +105,7 @@ class Table:
        
         if len(self.seats) < self.capacity:
              self.free = True
+        return self.free
         
 
     def assign_seat(self, name :str):

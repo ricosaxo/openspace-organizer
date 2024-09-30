@@ -1,14 +1,10 @@
 import csv
 import random as rd
-from file_utils import open_database
-from table import Table,Seat
+from utils.file_utils import open_database
+from utils.table import Table,Seat
 
 
 class Openspace(Table):
-
-    # Taking a list of students from the csv file
-    names = open_database("new_colleagues.csv")
-
 
     '''
     A class representing the Openspace
@@ -25,7 +21,7 @@ class Openspace(Table):
         self.tables = []
             
 
-    def organize(names :list):
+    def organize(self,names):
         
         '''
         The method that assigns people to `Seat` objects in the different `Table` objects
@@ -35,6 +31,16 @@ class Openspace(Table):
         name(list): list of the seat objects to put in table seat
         '''
 
+        #Check if we need to create some extra tables or seats (work in progress)
+        
+        #sample_table = Table()
+        #add_extra = len(names) - (self.number_of_tables * sample_table.capacity)
+
+        #if add_extra > 0:
+
+            #print
+
+        
         #Shuffle the list before assigning it
 
         rd.shuffle(names)
@@ -45,13 +51,15 @@ class Openspace(Table):
         for name in names:
             seat = Seat()
             seat.set_occupant(name)
-            list_of_seats.append(seat) 
+            list_of_seats.append(seat)
+         
 
         # Initializing the table objects and populating the self.tables with table objects
         
         for _ in range(self.number_of_tables):
             table = Table()
             self.tables.append(table)
+    
         
         # Start to assign the seat objects to the table objects
         seat_index = 0
@@ -62,6 +70,7 @@ class Openspace(Table):
                     seat_index += 1
                 else:
                     break
+        print(seat_index)
 
      
 
